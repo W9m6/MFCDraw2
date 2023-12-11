@@ -40,8 +40,28 @@ public:
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnBnClickedButton4();
+	
+protected:
 	CStatic m_canvas;    // 画布
 	int r = 300;		 // 圆半径
 	int baseX = 450, baseY = 500;  // 圆的初始位置
-	int n;					// 等分的个数
+	int n = 10;				 // 等分个数
+	int pointx, pointy;  // 滑块距离
+	CSliderCtrl Sliderx;
+	CSliderCtrl Slidery;
+	CSliderCtrl SliderR;
+	CSliderCtrl SliderN;
+	CPoint m_point;
+	bool bDrawing;
+	CArray<CPoint, CPoint&> m_points;  // 存储路径
+	CComboBox m_cbLineWidth;    // 线条宽度
+	COLORREF selectedPenColor;   // 选择的画笔颜色
+	COLORREF selectedBrushColor;  // 选择的画刷颜色
+
 };
